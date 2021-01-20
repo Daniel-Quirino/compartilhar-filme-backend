@@ -36,5 +36,9 @@ C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreap
 C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\Humanizer.dll
 C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\xunit.assert.dll
+C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\xunit.core.dll
+C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll
 C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.csproj.CoreCompileInputs.cache
 C:\Users\Dell\OneDrive\Área de Trabalho\pds\Backend\Backend\obj\Debug\netcoreapp3.1\Backend.MvcApplicationPartsAssemblyInfo.cache
