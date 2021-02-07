@@ -4,11 +4,9 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
-const productRoutes = require('./api/routes/products');
-const orderRoutes = require('./api/routes/orders');
-const userRoutes = require('./api/routes/user')
+const MoviesRoutes = require('./api/routes/movies');
 
-mongoose.connect();
+mongoose.connect('mongodb+srv://dpq_ufmg_br:H91rqDAOUJtdf9z8@compartilhar-filmes.t7eap.mongodb.net/default?retryWrites=true&w=majority', { useNewUrlParser: true })
 
 mongoose.Promise = global.Promise
 
@@ -31,9 +29,7 @@ app.use((req, res, next) => {
 });
 
 //Routes which should requests
-app.use('/products', productRoutes);
-app.use('/orders', orderRoutes);
-app.use('/user', userRoutes)
+app.use('/movies', MoviesRoutes);
 
 app.use((req, res, next ) => {
     const error = new Error('Not found');
