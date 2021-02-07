@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 //Routes which should requests
-app.use('/movies', MoviesRoutes);
+app.use('/api/v1/movies', MoviesRoutes);
 
 app.use((req, res, next ) => {
     const error = new Error('Not found');

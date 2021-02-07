@@ -4,18 +4,19 @@ const Movie = require("../models/movie");
 
 exports.getAllMovies = (req, res, next) => {
     Movie.find()
-    .select("name image views likes")
+    .select("title image views likes notes")
         .exec()
         .then(docs => {
             const response = {
                 count: docs.length,
                 movies: docs.map(doc => {
                     return {
-                        name: doc.name,
+                        title: doc.title,
                         image: doc.image,
                         _id: doc._id,
                         views: doc.views,
-                        likes: doc.likes
+                        likes: doc.likes,
+                        notes: doc.notes
                     }
                 })
             }
