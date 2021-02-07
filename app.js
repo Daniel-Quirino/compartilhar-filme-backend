@@ -10,6 +10,7 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 
 mongoose.Promise = global.Promise
 
+
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
