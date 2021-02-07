@@ -7,7 +7,6 @@ const movieSchema = mongoose.Schema({
     views: { type: Number, default: 0 },
     likes: { type: Number, default: 0 },
     notes: { type: Number, default: 0 },
-
 });
 
 module.exports = mongoose.model('Movie', movieSchema)
