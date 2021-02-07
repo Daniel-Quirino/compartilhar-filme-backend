@@ -9,4 +9,5 @@ router.post('/',  MovieController.createMovie)
 
 router.get('/:movieId', MovieController.getMovie)
 
+
 module.exports = router;
