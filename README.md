@@ -6,8 +6,8 @@
 - [Domínio](#dominio)
 
 ## Tecnologias Envolvidas
-- Linguagem: C#
-- Plataforma de desenvolvimento de software: [.Net](https://docs.microsoft.com/pt-br/dotnet/core/introduction)
+- Linguagem: Js
+- Interpretador: [Node.js](https://nodejs.org/en/)
 
 ## Rodar Localmente
 
@@ -16,9 +16,15 @@ Primeiramente, é necessário clonar o repositório:
 git clone https://github.com/Daniel-Quirino/compartilhar-filme-backend
 ```
 
-Instanciar o servidor local:
+Baixar as dependências:
 ```bash
-dotnet run
+yarn install
+```
+
+
+Rodar localmente:
+```bash
+yarn run start
 ```
 
 ## Dominio
