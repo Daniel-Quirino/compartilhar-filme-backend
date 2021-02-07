@@ -8,7 +8,7 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 const userRoutes = require('./api/routes/user')
 
-mongoose.connect(`mongodb+srv://${process.env.USER_NAME}:${process.env.MONGO_ATLAS_PW}@node-rest-shop-1ktfq.mongodb.net/${process.env.DATABASE}?retryWrites=true`, { useNewUrlParser: true });
+mongoose.connect();
 
 mongoose.Promise = global.Promise
 
