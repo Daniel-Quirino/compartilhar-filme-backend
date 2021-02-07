@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 
 const MoviesRoutes = require('./api/routes/movies');
 
-mongoose.connect('mongodb+srv://dpq_ufmg_br:H91rqDAOUJtdf9z8@compartilhar-filmes.t7eap.mongodb.net/default?retryWrites=true&w=majority', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 
 mongoose.Promise = global.Promise
 
