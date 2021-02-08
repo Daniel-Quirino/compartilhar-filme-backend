@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const MovieController = require('../controllers/users')
+const UserController = require('../controllers/users')
 
-router.get('/', MovieController.getAllUsers)
+router.get('/', UserController.getAllUsers)
 
+router.post('/', UserController.createUser)
+
+router.delete('/:id', UserController.deleteUser)
 
 module.exports = router;
