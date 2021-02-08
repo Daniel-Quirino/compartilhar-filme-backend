@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const MoviesRoutes = require('./api/routes/movies');
+const UsersRoutes = require('./api/routes/users');
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
 
@@ -17,10 +18,11 @@ app.use(bodyParser.json());
 
 var cors = require('cors')
 
-app.use(cors()) // cool now everything is handled!
+app.use(cors())
 
 //Routes which should requests
 app.use('/api/v1/movies', MoviesRoutes);
+app.use('/api/v1/users', UsersRoutes)
 
 app.use((req, res, next ) => {
     const error = new Error('Not found');
