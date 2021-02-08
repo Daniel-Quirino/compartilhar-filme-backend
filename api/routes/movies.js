@@ -7,6 +7,9 @@ router.get('/', MovieController.getAllMovies)
 
 router.post('/',  MovieController.createMovie)
 
+router.put('/like/:movieId', MovieController.likeMovie)
+
 router.get('/:movieId', MovieController.getMovie)
+
 
 module.exports = router;

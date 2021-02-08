@@ -65,3 +65,17 @@ exports.getMovie = (req, res, next) => {
             res.status(500).json({error: err});
         })
 }
+
+exports.likeMovie = (req, res, next) => {
+    const id = req.params.movieId;
+    Movie.updateOne({_id: id}, {$set: req.body})
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Movie updated',
+            })
+        })
+        .catch(err => {
+            res.status(500).json({error: err})
+        })
+}

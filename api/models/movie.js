@@ -5,7 +5,7 @@ const movieSchema = mongoose.Schema({
     title: { type: String, required: true },
     image: { type: String, default: '' },
     views: { type: Number, default: 0 },
-    likes: { type: Number, default: 0 },
+    likes: { type: Boolean, default: false },
     notes: { type: Number, default: 0 },
 });
 
