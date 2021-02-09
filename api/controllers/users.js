@@ -5,7 +5,7 @@ const User = require("../models/user");
 
 exports.getAllUsers = (req, res, next) => {
     User.find({active: true})
-    .select("name user_name age city create_date")
+    .select("name user_name email age city create_date")
         .exec()
         .then(docs => {
             const response = {
@@ -15,6 +15,7 @@ exports.getAllUsers = (req, res, next) => {
                         _id: doc._id,
                         name: doc.name,
                         user_name: doc.user_name,
+                        email: doc.email,
                         age: doc.age,
                         city: doc.city,
                         create_date: doc.create_date
@@ -36,6 +37,7 @@ exports.createUser = (req, res, next) => {
             _id: new mongoose.Types.ObjectId(),
             name: req.body.name,
             user_name: req.body.user_name,
+            email: req.body.email,
             age: req.body.age,
             city: req.body.city,
             password: md5(req.body.password)
