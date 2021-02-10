@@ -43,12 +43,15 @@ exports.createUser = (req, res, next) => {
         newUser.save()
         const response = {
             messsage: "Usuário criado com sucesso!",
-            new_user: newUser
+            new_user: newUser,
+            status: 201
         }
-        res.status(200).json(response)
+        res.status(201).json(response)
     }catch(error){
         res.status(500).json({
-            error: error
+            error: error,
+            messsage: "Erro interno.",
+            status: 500
         });
     }
 }
