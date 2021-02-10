@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { cleanName, validateLike } = require('../../helpers/movie')
 
 const Movie = require("../models/movie");
 
