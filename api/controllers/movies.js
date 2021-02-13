@@ -5,19 +5,21 @@ const Movie = require("../models/movie");
 
 exports.getAllMovies = (req, res, next) => {
     Movie.find()
-    .select("title image views likes notes")
+    .select("title image views likes notes rate")
         .exec()
         .then(docs => {
             const response = {
                 count: docs.length,
                 movies: docs.map(doc => {
+                    console.log(doc)
                     return {
                         title: doc.title,
                         image: doc.image,
                         _id: doc._id,
                         views: doc.views,
                         likes: doc.likes,
-                        notes: doc.notes
+                        notes: doc.notes,
+                        rate: doc.rate,
                     }
                 })
             }
@@ -42,6 +44,7 @@ exports.createMovie = (req, res, next) => {
             createdProduct: {
                 name: result.name,
                 price: result.image,
+                rate: result.rate,
                 _id: result._id,
             }
         })
@@ -68,6 +71,20 @@ exports.getMovie = (req, res, next) => {
 }
 
 exports.likeMovie = (req, res, next) => {
+    const id = req.params.movieId;
+    Movie.updateOne({_id: id}, {$set: req.body})
+        .exec()
+        .then(result => {
+            res.status(200).json({
+                message: 'Movie updated',
+            })
+        })
+        .catch(err => {
+            res.status(500).json({error: err})
+        })
+}
+
+exports.rateMovie = (req, res, next) => {
     const id = req.params.movieId;
     Movie.updateOne({_id: id}, {$set: req.body})
         .exec()
