@@ -1,4 +1,9 @@
-const { cleanName, validateLike, validateMongoId }  = require('./movie');
+const { 
+    cleanName, 
+    validateLike, 
+    validateMongoId, 
+    validateRate
+    }  = require('./movie');
 
 describe('Movie', () => {
     describe('Clean name', () => { 
@@ -11,35 +16,30 @@ describe('Movie', () => {
         })
     })
 
-    describe('Validate', () => { 
-        
-
-        const bodyParams = {
-            likes: true
-        }
+    describe('Validate', () => {
         describe('validate Like', () => { 
             it('validateLike when have number', () => { 
                 expect(validateLike(8)).toBe(false);
             })
 
             it('Have boolean string false', () => { 
-                expect(validateLike({...bodyParams, likes:'false'})).toBe(false);
+                expect(validateLike('false')).toBe(false);
             })
 
             it('Have boolean false', () => { 
-                expect(validateLike({...bodyParams, likes:false})).toBe(true);
+                expect(validateLike(false)).toBe(true);
             })
 
             it('Have boolean true', () => { 
-                expect(validateLike({...bodyParams, likes:true})).toBe(true);
+                expect(validateLike(true)).toBe(true);
             })
 
             it('Have boolean string true', () => { 
-                expect(validateLike({...bodyParams, likes:'true'})).toBe(false);
+                expect(validateLike('true')).toBe(false);
             })
 
             it('Have string', () => { 
-                expect(validateLike({...bodyParams, likes:'another param'})).toBe(false);
+                expect(validateLike('another param')).toBe(false);
             })
         })
 
@@ -58,6 +58,24 @@ describe('Movie', () => {
 
             it('validateLike when have boolean false', () => { 
                 expect(validateLike('601ff51c18ac57e78053940064574564')).toBe(false);
+            })
+        })
+
+        describe('Validate Rate', () => { 
+            it('Validate Rate when have number more than 5', () => { 
+                expect(validateRate(6)).toBe(false);
+            })
+
+            it('Validate Rate when have number less than 5', () => { 
+                expect(validateRate(3)).toBe(true);
+            })
+
+            it('Validate Rate when have negative number', () => { 
+                expect(validateRate(-8)).toBe(false);
+            })
+
+            it('Validate Rate when have string value', () => { 
+                expect(validateRate('45')).toBe(false);
             })
         })
     })

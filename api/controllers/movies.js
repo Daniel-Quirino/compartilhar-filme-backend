@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { cleanName, validateLike } = require('../../helpers/movie')
+const { validateLike, validateRate } = require('../../helpers/movie')
 
 const Movie = require("../models/movie");
 
@@ -11,7 +11,6 @@ exports.getAllMovies = (req, res, next) => {
             const response = {
                 count: docs.length,
                 movies: docs.map(doc => {
-                    console.log(doc)
                     return {
                         title: doc.title,
                         image: doc.image,
@@ -72,6 +71,14 @@ exports.getMovie = (req, res, next) => {
 
 exports.likeMovie = (req, res, next) => {
     const id = req.params.movieId;
+
+    if(!validateLike(req.body.likes)) {
+        return res.status(422).json({
+            message: 'O valor passado para o parâmetro likes está inválido - valor deve ser um booleano - true ou false',
+            payload: req.body
+        })
+    }
+
     Movie.updateOne({_id: id}, {$set: req.body})
         .exec()
         .then(result => {
@@ -86,6 +93,13 @@ exports.likeMovie = (req, res, next) => {
 
 exports.rateMovie = (req, res, next) => {
     const id = req.params.movieId;
+
+    if(!validateRate(req.body.rate)) {
+        return res.status(422).json({
+            message: 'O valor passado para o parâmetro rate está inválido - valor deve ser um número inteiro de 1 - 5',
+            payload: req.body
+        })
+    }
     Movie.updateOne({_id: id}, {$set: req.body})
         .exec()
         .then(result => {

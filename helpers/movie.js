@@ -4,8 +4,13 @@ const cleanName = (name) => {
         .normalize('NFD').replace(/([\u0300-\u036f]|[^0-9a-zA-Z\s])/g, '')
 }
 
-const validateLike = (bodyParam) => {
-    return bodyParam.likes === true || bodyParam.likes === false;
+const validateLike = (likes) => {
+    return (likes === true || likes === false);
+}
+
+const validateRate = (rate) => {
+    console.log(rate === null)
+    return rate === null || typeof rate === 'number' && rate >=0 && rate <= 5;
 }
 
 const validateMongoId = (id) => {
@@ -16,7 +21,6 @@ const validateMongoId = (id) => {
 }
 
 exports.validateLike = validateLike;
-
 exports.cleanName = cleanName;
-
+exports.validateRate = validateRate;
 exports.validateMongoId = validateMongoId ;
