@@ -9,7 +9,7 @@ exports.validadeUser = async (req, res, next) => {
         if(user.length == 0){
             res.status(404).json({message: "Usuário ou Senha incorretas", status: 404})
         }else{
-            res.status(200).json({message: "Login realizado com sucesso", status: 200})
+            res.status(200).json({message: "Login realizado com sucesso", user: user, status: 200})
         }
     }catch(error){
         console.log(error)
