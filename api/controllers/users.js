@@ -20,6 +20,7 @@ exports.getAllUsers = (req, res, next) => {
                         create_date: doc.create_date
                     }
                 })
+                
             }
             res.status(200).json(response)
         })
