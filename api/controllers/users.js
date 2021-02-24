@@ -69,3 +69,12 @@ exports.deleteUser = (req, res, next) => {
         });
     }
 }
+
+exports.getUserById = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+        res.status(200).json({message: "Sucesso ao trazer o usuário", user: user})
+    } catch(error){
+        res.status(500).json({message: "Erro ao trazer o usuário"})
+    }
+}
