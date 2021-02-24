@@ -56,12 +56,11 @@ exports.createMovie = (req, res, next) => {
 
 exports.getMovie = (req, res, next) => {
     const id = req.params.movieId;
-    Product.findById(id)
-        .select("name image views likes")
+    Movie.findById(id)
+        .select("title image views likes notes rate")
         .exec()
         .then(doc => {
-            console.log('from database', doc);
-            doc ? res.status(200).json(doc) : res.status(404).json({message: 'No valid entry found for provider id'})
+            doc ? res.status(200).json({movie:doc}) : res.status(404).json({message: 'No valid entry found for provider id'})
         })
         .catch(err => {
             console.log(err);
