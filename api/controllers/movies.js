@@ -58,7 +58,7 @@ exports.createMovie = (req, res, next) => {
 exports.getMovie = (req, res, next) => {
     const id = req.params.movieId;
     Movie.findById(id)
-        .select("title image views likes notes rate description")
+        .select("title image views likes notes rate description comments")
         .exec()
         .then(doc => {
             doc ? res.status(200).json({movie:doc}) : res.status(404).json({message: 'No valid entry found for provider id'})
