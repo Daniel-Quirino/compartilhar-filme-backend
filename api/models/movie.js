@@ -9,7 +9,7 @@ const movieSchema = mongoose.Schema({
     notes: { type: Number, default: 0 },
     rate: { type: Number, default: 0 },
     description:{ type: String, default: '' },
-    comments:{type: Object, default: {}}
+    comments:{type: Array, default: []}
 });
 
 module.exports = mongoose.model('Movie', movieSchema)

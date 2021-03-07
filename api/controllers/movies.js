@@ -111,3 +111,30 @@ exports.rateMovie = (req, res, next) => {
             res.status(500).json({error: err})
         })
 }
+
+exports.updateMovieComment = (req, res, next) => {
+    const id = req.params.movieId;
+
+    Movie.findById(id)
+    .then(doc => {
+        doc.comments = [...doc.comments, req.body.comment];
+
+        Movie.updateOne({_id: id}, {$set: {comments: doc.comments}})
+        .exec()
+        .then(result => {
+            return res.status(200).json({
+                comments: doc.comments,
+            })
+        })
+        .catch(err => {
+            res.status(500).json({error: err})
+        })
+    })
+
+    // if(!validateComment(req.body.comment)) {
+    //     return res.status(422).json({
+    //         message: 'O valor passado para o parâmetro comment está inválido',
+    //         payload: req.body
+    //     })
+    // }
+}
