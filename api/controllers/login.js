@@ -5,7 +5,7 @@ const User = require("../models/user");
 
 exports.validadeUser = async (req, res, next) => {
     try{
-        const user = await User.find({ $and: [ {email: req.body.email}, {password: md5(req.body.password)} ] })
+        const user = await User.find({ $and: [ {email: req.body.email}, {password: md5(req.body.password)} ] }).populate('watched_movies')
         if(user.length == 0){
             res.status(404).json({message: "Usuário ou Senha incorretas", status: 404})
         }else{
