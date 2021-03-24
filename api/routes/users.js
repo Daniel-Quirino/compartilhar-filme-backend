@@ -11,4 +11,6 @@ router.post('/', UserController.createUser)
 
 router.delete('/:id', UserController.deleteUser)
 
+router.patch('/watch/movie/:id', UserController.addMovieToList)
+
 module.exports = router;

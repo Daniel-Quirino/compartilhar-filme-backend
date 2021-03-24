@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
     city: { type: String, required: true },
     password: { type: String, required: true },
     create_date: { type: Date, default: () => Date.now(), required: true},
+    watched_movies: [{type: mongoose.Schema.ObjectId, ref: 'Movie'}],
     active: { type: Boolean, default: true, required: true},
 });
 

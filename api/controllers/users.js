@@ -5,7 +5,9 @@ const User = require("../models/user");
 
 exports.getAllUsers = (req, res, next) => {
     User.find({active: true})
-    .select("name user_name email city create_date")
+    .select("name user_name email city create_date watched_movies")
+        .sort('create_date')
+        .populate('watched_movies')
         .exec()
         .then(docs => {
             const response = {
@@ -73,9 +75,21 @@ exports.deleteUser = (req, res, next) => {
 
 exports.getUserById = async (req, res, next) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await User.findById(req.params.id).populate('watched_movies');
         res.status(200).json({message: "Sucesso ao trazer o usuário", user: user})
     } catch(error){
+        res.status(500).json({message: "Erro ao trazer o usuário"})
+    }
+}
+
+exports.addMovieToList = async (req, res, next) => {
+    try {
+        await User.updateOne(
+            { _id: req.params.id }, 
+            { $push: { watched_movies: req.body.movie } }
+        )
+        res.status(200).json({message: "Filmes adicionado com sucesso!"})
+    } catch {
         res.status(500).json({message: "Erro ao trazer o usuário"})
     }
 }
